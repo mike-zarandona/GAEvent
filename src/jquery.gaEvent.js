@@ -2,11 +2,12 @@
  * jQuery.gaEvent
  * Description:		gaEvent makes it easy to write one-liner Google Event custom events.
  * Author:			Mike Zarandona
- * Version:			1.0.1
+ * Version:			1.0.2
  *
  * Variables:		category [REQUIRED] [string] the name supplied for the group of objects to track
  * 					action   [REQUIRED] [string] a unique user-action paired with each category, and commonly used to define the type of user interaction for the web object
  * 					label    [OPTIONAL] [string] optional field to provide additional dimension to the event data
+ *										pageURL   | label = the current page's URL
  * 										pageTitle | label = the current page's title
  *										linkDest  | label = the referenced link's destination (reference an a tag)
  *										linkTitle | label = the referenced link's title (reference an a tag)
@@ -23,6 +24,10 @@
 	jQuery.fn.gaEvent = function(category, action, label, value) {
 
 		return this.each(function(){
+
+			// Set label as 'pageURL' to grab the current page URL
+			var pageURL = window.location;
+			if (label == 'pageURL') { label = pageURL; }
 
 			// Set label as 'pageTitle' to grab the current page title
 			var pageTitle = document.title;
