@@ -12,7 +12,6 @@
  *										linkDest  | label = the referenced link's destination (reference an a tag)
  *										linkTitle | label = the referenced link's title (reference an a tag)
  * 					value    [OPTIONAL] [string] integer that can be used to provide numerical data about the user event
- * 					testMode [FUNCTION VARIABLE] [bool]   flag to turn on / off test mode which when set to true pushes events to the console
  *
  * Usage:			$('#logo img').gaEvent('Logo', 'Click', 'Home');0
  *					$('a#atag').gaEvent('Header Link', 'Click', 'pageTitle');
@@ -49,9 +48,4 @@
 			$(this).click(function() { _gaq.push(['_trackEvent', category, action, label, value]); });
 		});
 	};
-})(jQuery);
-
-
-
-(function($){
 })(jQuery);
