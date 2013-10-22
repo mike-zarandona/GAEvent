@@ -20,7 +20,7 @@
     <header>
       <div class="inner">
         <h1>jQuery.gaEvent</h1>
-        <h2>A jQuery plugin that makes it fast &amp; easy to write Google Event custom events.</h2>
+        <h2>A jQuery plugin that makes it easy to write custom Google Analytics events quickly.</h2>
         <a href="https://github.com/mike-zarandona/jQuery.gaEvent" class="button"><small>View project on</small>GitHub</a>
       </div>
     </header>
@@ -28,12 +28,61 @@
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h1>
-<a name="jquerygaevent" class="anchor" href="#jquerygaevent"><span class="octicon octicon-link"></span></a>jQuery.gaEvent</h1>
+          <h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting Started</h2>
 
-<h1></h1>
+<p>To use gaEvent, simply target an element(s) and pass in GA variables.</p>
 
-<p>gaEvent makes it easy to write one-liner Google Event custom events.</p>
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>Report a logo click:</p>
+
+<pre><code>$('#logo img').gaEvent('Logo', 'Click', 'Home');
+</code></pre>
+
+<p>Target an <code>a</code> tag:</p>
+
+<pre><code>$('a#atag').gaEvent('Header Link', 'Click', 'pageTitle');
+</code></pre>
+
+<h2>
+<a name="variables" class="anchor" href="#variables"><span class="octicon octicon-link"></span></a>Variables</h2>
+
+<pre><code>$('.foo').gaEvent('category', 'action', 'label', 'value');
+</code></pre>
+
+<p><code>category</code>    [<strong>REQUIRED</strong>] [<em>string</em>] the name supplied for the group of objects to track</p>
+
+<p><code>action</code>    [<strong>REQUIRED</strong>] [<em>string</em>] a unique user-action paired with each category, and commonly used to define the type of user interaction for the web object</p>
+
+<p><code>label</code>    [<strong>OPTIONAL</strong>] [<em>string</em> | <em>variable</em>] optional field to provide additional dimension to the event data</p>
+
+<p><code>value</code>    [<strong>OPTIONAL</strong>] [<em>int</em>] integer that can be used to provide numerical data about the user event</p>
+
+<h2>
+<a name="label-variables" class="anchor" href="#label-variables"><span class="octicon octicon-link"></span></a><code>Label</code> Variables</h2>
+
+<p>The <code>label</code> argument is a great place to dynamically capture information about the page or link that is currently being targeted.  Pass in these variable placeholder names to populate the <code>label</code> argument with dynamic data.</p>
+
+<ul>
+<li>
+<code>pageURL</code> The current page's URL</li>
+<li>
+<code>pageTitle</code> The current page's title</li>
+<li>
+<code>linkDest</code> The referenced link's destination (make sure to target an <code>a</code> tag)</li>
+<li>
+<code>linkTitle</code> The referenced link's title (make sure to target an <code>a</code> tag)</li>
+</ul><h2>
+<a name="implementation" class="anchor" href="#implementation"><span class="octicon octicon-link"></span></a>Implementation</h2>
+
+<p>I <strong>STRONGLY</strong> recommend using the <a href="http://tinyurl.com/knv6kos">Google Analytics Debugger extension for Chrome</a> when implementing this plugin.  It saved me a ton of time and headache.</p>
+
+<h2>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h2>
+
+<p>Mike Zarandona • <a href="http://mikezarandona.com">http://mikezarandona.com</a> • <a href="http://twitter.com/mikezarandona">@mikezarandona</a></p>
         </section>
 
         <aside id="sidebar">
@@ -53,6 +102,16 @@
       </div>
     </div>
 
-  
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-45062930-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
