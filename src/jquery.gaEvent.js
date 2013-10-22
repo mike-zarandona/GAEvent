@@ -11,9 +11,9 @@
  * 										pageTitle | label = the current page's title
  *										linkDest  | label = the referenced link's destination (reference an a tag)
  *										linkTitle | label = the referenced link's title (reference an a tag)
- * 					value    [OPTIONAL] [string] integer that can be used to provide numerical data about the user event
+ * 					value    [OPTIONAL] [int] integer that can be used to provide numerical data about the user event
  *
- * Usage:			$('#logo img').gaEvent('Logo', 'Click', 'Home');0
+ * Usage:			$('#logo img').gaEvent('Logo', 'Click', 'Home');
  *					$('a#atag').gaEvent('Header Link', 'Click', 'pageTitle');
  * 
  * Note: 			I STRONGLY recommend using the Google Analytics Debugger extension for Chrome (http://tinyurl.com/knv6kos) when implementing this plugin
