@@ -2,8 +2,8 @@
  * jQuery.gaEvent
  * Description:		gaEvent makes it easy to write one-liner Google Event custom events.
  * Author:			Mike Zarandona
- * Version:			1.0.3
- *					Changed from jQuery .click to .on for better handling of dynamic elements
+ * Version:			1.0.4
+ *					Added support for classic and universal GA scripts
  *
  * Variables:		category [REQUIRED] [string] the name supplied for the group of objects to track
  * 					action   [REQUIRED] [string] a unique user-action paired with each category, and commonly used to define the type of user interaction for the web object
@@ -25,6 +25,8 @@
 
 		return this.each(function(){
 
+			/* Analytics Logic */
+
 			// Set label as 'pageURL' to grab the current page URL
 			var pageURL = window.location;
 			if (label == 'pageURL') { label = pageURL; }
@@ -45,8 +47,22 @@
 			if (label === undefined) { label = ''; }
 
 
-			// Report to Google Analytics
-			$(this).on('click', function() { _gaq.push(['_trackEvent', category, action, label, value]); });
+
+			/* GA Logic - Determine the type of Analytics Script being used */
+
+			// Universal (analytics.js | new)
+			if (typeof ga === 'function') {
+				$(this).on('click', function() {
+					ga('send', 'event', category, action, label, value);
+				});
+			}
+
+			// Classic (ga.js | old)
+			if (typeof _gaq !== 'undefined' && typeof _gaq.push === 'function') {
+				$(this).on('click', function() {
+					_gaq.push(['_trackEvent', category, action, label, value]);
+				});
+			}
 		});
 	};
 })(jQuery);
