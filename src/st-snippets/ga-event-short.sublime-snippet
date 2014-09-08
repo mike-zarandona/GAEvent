@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[
+data-ga-category="${1:category}" data-ga-label="${2:label}"
+]]></content>
+	<tabTrigger>gaevent</tabTrigger>
+</snippet>
